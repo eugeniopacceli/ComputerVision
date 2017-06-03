@@ -1,7 +1,7 @@
 import numpy as np
 from keras.models import Sequential
 from keras.layers.core import Dense, Dropout, Activation, Flatten
-from keras.layers.convolutional import Convolution2D, MaxPooling2D
+from keras.layers.convolutional import Conv2D, MaxPooling2D
 from keras.utils import np_utils
 from keras.datasets import cifar10
 
@@ -24,12 +24,12 @@ model = Sequential()
 # For an explanation on conv layers see http://cs231n.github.io/convolutional-networks/#conv
 # By default the stride/subsample is 1 and there is no zero-padding.
 # If you want zero-padding add a ZeroPadding layer or, if stride is 1 use border_mode="same"
-model.add(Convolution2D(12, 5, 5, activation = 'relu', input_shape=in_shape, init='he_normal'))
+model.add(Conv2D(12, (5, 5), activation = 'relu', input_shape=(32,32,3), init='he_normal'))
 
 # For an explanation on pooling layers see http://cs231n.github.io/convolutional-networks/#pool
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
-model.add(Convolution2D(25, 5, 5, activation = 'relu', init='he_normal'))
+model.add(Conv2D(25, (5, 5), activation = 'relu', init='he_normal'))
 
 model.add(MaxPooling2D(pool_size=(2, 2)))
 
